@@ -1,11 +1,18 @@
 import React from "react";
 
-export default function RepositoryItem(props) {
+interface RepositoryItemProps {
+  repository: {
+    name: string;
+    description: string;
+    html_url: string;
+  };
+}
+
+export default function RepositoryItem(props: RepositoryItemProps) {
   return (
     <li>
       <strong>{props.repository.name}</strong>
       <p>{props.repository.description}</p>
-      {console.log(props.repository.htm_url)}
       <a href={props.repository.html_url}>Acessar repositórios</a>
     </li>
   );

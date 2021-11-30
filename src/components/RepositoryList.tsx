@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
-import RepositoryItem from "./RepositoryItem";
 
 import "../styles/repositories.scss";
 
+import RepositoryItem from "./RepositoryItem";
+
 //https://api.github.com/users/ander5onPereira/repos
 
+interface Repository {
+  name: string;
+  description: string;
+  html_url: string;
+}
+
 export default function RepositoryList() {
-  const [repositories, setRepositories] = useState([]);
+  const [repositories, setRepositories] = useState<Repository[]>([]);
 
   useEffect(() => {
     fetch("https://api.github.com/users/ander5onPereira/repos")
