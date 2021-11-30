@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function RespositoryItem(props) {
+export default function RepositoryItem(props) {
   return (
     <li>
       <strong>{props.respository?.name ?? "Default"}</strong>

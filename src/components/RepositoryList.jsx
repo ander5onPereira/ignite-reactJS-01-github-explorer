@@ -1,8 +1,9 @@
-import React from "react";
-import RespositoryItem from "./RespositoryItem";
+import React, { useEffect, useState } from "react";
+import RepositoryItem from "./RepositoryItem";
 
 import "../styles/repositories.scss";
 
+//https://api.github.com/users/ander5onPereira/repos
 const repository = {
   name: "unform",
   description: "Forms in React",
@@ -10,15 +11,23 @@ const repository = {
 };
 
 export default function RepositoryList() {
+  const [repositories, setRepositories] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/ander5onPereira/repos")
+      .then((response) => response.json())
+      .then((data) => setRepositories(data));
+  }, []);
+
   return (
     <section className="repository-list">
       <h1>Lista de repositórios</h1>
 
       <ul>
-        <RespositoryItem repository={repository} />
-        <RespositoryItem repository={repository} />
-        <RespositoryItem repository={repository} />
-        <RespositoryItem repository={repository} />
+        <RepositoryItem repository={repository} />
+        <RepositoryItem repository={repository} />
+        <RepositoryItem repository={repository} />
+        <RepositoryItem repository={repository} />
       </ul>
     </section>
   );
